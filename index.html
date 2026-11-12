@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vivek Vanera, ML engineer</title>
+  <meta name="description" content="Vivek Vanera builds retrieval systems and LLM agents, and the guardrails that keep them from doing the wrong thing. MS Computer Science, NC State.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Schibsted+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23ff5a1f%22/%3E%3Ctext x=%2216%22 y=%2223%22 font-family=%22Arial%22 font-weight=%22700%22 font-size=%2218%22 text-anchor=%22middle%22 fill=%22%23111714%22%3EV%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<!--
+  Content comes from Vivek__Resume.pdf. The emails, songs and orders shown inside
+  the project demos are sample data, and each demo says so in its caption.
+-->
+
+<a class="skip" href="#work">Skip to work</a>
+
+<header class="bar wrap">
+  <a class="wordmark" href="#top">Vivek Vanera</a>
+  <nav aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn-small" href="mailto:vivekvanera@gmail.com">Email me</a>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap" data-reveal>
+    <h1 class="r">Vivek Vanera</h1>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="lede r">I build retrieval systems and LLM agents, and the guardrails that keep them from doing the wrong thing.</p>
+        <div class="actions r">
+          <a class="btn" href="mailto:vivekvanera@gmail.com?subject=Hello%20Vivek">Email me</a>
+          <a class="textlink" href="Vivek__Resume.pdf">Download résumé (PDF)</a>
+        </div>
+        <dl class="facts r">
+          <div><dt>Now</dt><dd>GenAI and ML engineering intern, Seagate Technology</dd></div>
+          <div><dt>Studying</dt><dd>MS in Computer Science, NC State, to May 2027</dd></div>
+          <div><dt>Based in</dt><dd>Raleigh, North Carolina</dd></div>
+        </dl>
+      </div>
+
+      <figure class="hero-media r" data-ui>
+        <div class="inbox" aria-label="EZmail inbox showing four sample emails sorted by priority">
+          <div class="inbox-top"><span class="inbox-name">EZmail</span><span class="inbox-count">4 new, 2 need you today</span></div>
+          <ul>
+            <li class="mail-card p-high">
+              <span class="prio">High</span>
+              <div class="mc-body">
+                <p class="mc-from">Graduate School Office</p>
+                <p class="mc-subj">Thesis committee form due Friday</p>
+                <p class="mc-sum">Signed form needed from all three members. Upload through the portal.</p>
+                <p class="mc-chips"><span>Fri, Nov 6</span><span>grad portal link</span></p>
+              </div>
+            </li>
+            <li class="mail-card p-high">
+              <span class="prio">High</span>
+              <div class="mc-body">
+                <p class="mc-from">Recruiting team</p>
+                <p class="mc-subj">Interview slot confirmation</p>
+                <p class="mc-sum">Pick one of three times for a 45-minute technical round.</p>
+                <p class="mc-chips"><span>Nov 3, 10:00</span><span>Nov 4, 14:00</span><span>calendar link</span></p>
+              </div>
+            </li>
+            <li class="mail-card p-med">
+              <span class="prio">Medium</span>
+              <div class="mc-body">
+                <p class="mc-from">Course TA</p>
+                <p class="mc-subj">Project 2 rubric posted</p>
+                <p class="mc-sum">Rubric is up. Office hours moved to Thursday.</p>
+              </div>
+            </li>
+            <li class="mail-card p-low">
+              <span class="prio">Low</span>
+              <div class="mc-body">
+                <p class="mc-from">Campus newsletter</p>
+                <p class="mc-subj">This week on Hillsborough Street</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <figcaption>EZmail, the email agent below, sorting an inbox. Sample emails.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="work" class="work" aria-labelledby="work-h">
+    <div class="wrap section-head" data-reveal>
+      <h2 id="work-h" class="r">Selected work</h2>
+      <p class="r">Four projects, each shown doing its job. The first one runs right here in your browser.</p>
+    </div>
+
+    <!-- Refund resolver: the live demo -->
+    <article class="proj proj-fsm field" data-reveal aria-labelledby="p1">
+      <div class="wrap fsm-grid">
+        <div class="ff-text">
+          <h3 id="p1" class="r">A refund agent that can’t skip steps</h3>
+          <p class="r">An orchestrator owns a finite state machine. Four FastAPI agents (classifier, policy, action, verifier) can only propose the next move. The orchestrator makes it, through a guarded transition, and high-value refunds stop for a person to approve.</p>
+          <dl class="results r">
+            <div><dt>Duplicate refunds</dt><dd>0 in testing, enforced by idempotency keys</dd></div>
+            <div><dt>Median latency</dt><dd>About 84% lower than an LLM-only baseline</dd></div>
+            <div><dt>How</dt><dd>Yes/no question judging (LAYA) for fuzzy calls, validated with CheckEval</dd></div>
+            <div><dt>Stack</dt><dd>FastAPI, Pydantic, PostgreSQL</dd></div>
+          </dl>
+        </div>
+
+        <div class="tool r" data-ui>
+          <fieldset class="scenarios">
+            <legend>Pick a refund request</legend>
+            <label><input type="radio" name="sc" value="small" checked> $40, item arrived damaged</label>
+            <label><input type="radio" name="sc" value="large"> $1,200, laptop never delivered</label>
+            <label><input type="radio" name="sc" value="dup"> The same $40 request, sent again</label>
+          </fieldset>
+
+          <ol class="states" id="states" aria-label="Workflow states">
+            <li data-s="received">Received</li>
+            <li data-s="classified">Classified</li>
+            <li data-s="policy">Policy checked</li>
+            <li data-s="proposed">Action proposed</li>
+            <li data-s="approval">Human approval</li>
+            <li data-s="verified">Verified</li>
+            <li data-s="resolved">Resolved</li>
+          </ol>
+
+          <div class="controls">
+            <button class="btn" type="button" id="step">Next step</button>
+            <span class="approve" id="approve" hidden>
+              <button class="btn btn-light" type="button" data-decide="yes">Approve</button>
+              <button class="btn btn-ghost" type="button" data-decide="no">Deny</button>
+            </span>
+            <button class="textlink on-field" type="button" id="skip">Let an agent try to skip ahead</button>
+          </div>
+
+          <ol class="log" id="log" aria-live="polite" aria-label="Orchestrator log"></ol>
+          <p class="note">Sample orders. The $500 approval limit is a demo setting.</p>
+          <noscript><p>With JavaScript on, this panel steps a refund through each guarded state.</p></noscript>
+        </div>
+      </div>
+    </article>
+
+    <!-- Disaster damage detection -->
+    <article class="proj proj-xbd wrap" data-reveal aria-labelledby="p4">
+      <div class="px-text">
+        <h3 id="p4" class="r">Grading hurricane damage from space</h3>
+        <p class="r">A model that finds every building in a satellite photo taken before a disaster, compares it with the photo taken after, and grades each one: no damage, minor, major or destroyed. Built with Mulya Patel and Sakhi Patel for Advanced Topics in Machine Learning at NC State.</p>
+        <p class="r">The hard part is telling minor from major damage when most buildings are fine. We gave the model an explicit before-minus-after change signal, an ordinal loss that punishes far-off grades more, and weighted sampling for the rare classes.</p>
+        <dl class="results r">
+          <div><dt>Overall score</dt><dd>0.814, above the xView2 winner’s 0.811</dd></div>
+          <div><dt>Damage F1</dt><dd>0.787 across four damage grades</dd></div>
+          <div><dt>Building F1</dt><dd>0.875</dd></div>
+          <div><dt>Stack</dt><dd>PyTorch, DeepLabV3+ on ResNet-50, xBD dataset</dd></div>
+        </dl>
+        <p class="r"><a class="textlink" href="https://github.com/MulyaP/Disaster-Damage-Detection">Code on GitHub</a></p>
+      </div>
+      <figure class="px-fig r">
+        <div class="px-grid">
+          <div><img src="assets/xbd/pre.jpg" width="422" height="422" loading="lazy" alt="Satellite view of a lakeside neighbourhood before Hurricane Michael."><p>Before</p></div>
+          <div><img src="assets/xbd/post.jpg" width="422" height="422" loading="lazy" alt="The same neighbourhood after the hurricane, with damaged roofs and debris."><p>After</p></div>
+          <div><img src="assets/xbd/gt.png" width="422" height="422" loading="lazy" alt="Ground-truth damage map with each building coloured by its true damage grade."><p>Ground truth</p></div>
+          <div><img src="assets/xbd/pred.png" width="422" height="422" loading="lazy" alt="The model's predicted damage map, closely matching the ground truth."><p>Our model</p></div>
+        </div>
+        <p class="px-key" aria-label="Colour key"><span class="k-no">No damage</span><span class="k-mi">Minor</span><span class="k-ma">Major</span><span class="k-de">Destroyed</span></p>
+        <figcaption>Hurricane Michael, xBD tile 436. It gets the destroyed buildings right and mixes up some minor and major damage. Imagery: xBD dataset, Maxar, CC BY-NC-SA 4.0.</figcaption>
+      </figure>
+    </article>
+
+    <!-- EZmail -->
+    <article class="proj proj-mail wrap" data-reveal aria-labelledby="p2">
+      <div class="pm-text">
+        <h3 id="p2" class="r">EZmail, an email agent</h3>
+        <p class="r">It reads each new email, ranks it by importance and pulls out what matters: a short summary, the dates and the links. Each email becomes a card coloured by priority, so you see what needs you without opening the inbox.</p>
+        <p class="r">When a reply is needed, it drafts one. You choose the tone, edit the draft and send it from the same card.</p>
+        <dl class="results r">
+          <div><dt>Runs as</dt><dd>A containerised FastAPI microservice</dd></div>
+          <div><dt>Stack</dt><dd>Python, FastAPI, Docker, LLM APIs</dd></div>
+        </dl>
+      </div>
+      <figure class="pm-shot r" data-ui>
+        <div class="detail">
+          <div class="d-head">
+            <span class="prio">High</span>
+            <p class="d-subj">Interview slot confirmation</p>
+            <p class="d-from">Recruiting team</p>
+          </div>
+          <div class="d-block">
+            <p class="d-label">Summary</p>
+            <p>They want you to pick one of three times for a 45-minute technical round, and confirm by Monday.</p>
+          </div>
+          <div class="d-block d-two">
+            <div><p class="d-label">Dates found</p><p>Nov 3, 10:00<br>Nov 4, 14:00<br>Nov 5, 11:30</p></div>
+            <div><p class="d-label">Links found</p><p>Calendar booking page</p></div>
+          </div>
+          <div class="d-block">
+            <p class="d-label">Draft reply</p>
+            <p class="tones" aria-label="Reply tone: formal selected"><span class="on">Formal</span><span>Friendly</span><span>Brief</span></p>
+            <p class="d-draft">Thank you for the invitation. November 4 at 14:00 works well for me. I look forward to speaking with the team.</p>
+          </div>
+        </div>
+        <figcaption>One email opened as a card: summary, extracted dates and links, and a draft reply. Sample email.</figcaption>
+      </figure>
+    </article>
+
+    <!-- Recofy -->
+    <article class="proj proj-reco wrap" data-reveal aria-labelledby="p3">
+      <figure class="pr-shot r" data-ui>
+        <div class="reco">
+          <div class="reco-seed">
+            <p class="d-label">Because you saved</p>
+            <p class="reco-track">“Night Drive, Slow”</p>
+            <p class="reco-tags"><span>dream pop</span><span>reverb-heavy</span><span>late night</span><span>female vocals</span></p>
+          </div>
+          <ol class="reco-list">
+            <li><span class="rt">“Glasshouse Summer”</span><span class="rs">0.91</span><span class="bar-fill" style="--w:.91"></span></li>
+            <li><span class="rt">“Low Tide Radio”</span><span class="rs">0.88</span><span class="bar-fill" style="--w:.88"></span></li>
+            <li><span class="rt">“Polaroid Weather”</span><span class="rs">0.84</span><span class="bar-fill" style="--w:.84"></span></li>
+          </ol>
+        </div>
+        <figcaption>Top three matches by embedding similarity, before the language model refines them. Sample tracks.</figcaption>
+      </figure>
+      <div class="pr-text">
+        <h3 id="p3" class="r">Recofy, music picks from your own library</h3>
+        <p class="r">You sign in with Spotify. Recofy tags every song you’ve liked using Last.fm and OpenAI, turns the tags into embeddings and stores them in Pinecone. Recommendations are grounded in what you already listen to, not in global charts.</p>
+        <dl class="results r">
+          <div><dt>Retrieval accuracy</dt><dd>85%+ on the top three matches</dd></div>
+          <div><dt>Stack</dt><dd>Spotify API, Last.fm API, OpenAI, Pinecone</dd></div>
+        </dl>
+        <p class="r"><a class="textlink" href="https://github.com/draqa214/Music-Recommender-RAG-UI">Code on GitHub</a></p>
+      </div>
+    </article>
+
+    <!-- Smaller projects -->
+    <div class="more wrap" data-reveal>
+      <h3 class="r">More projects</h3>
+      <ul>
+        <li class="r">
+          <div class="mo-head"><p class="mo-t">Graph-TIGER</p><p class="mo-m">ML with Graphs, NC State, with Krisha Darji and Janam Patel</p></div>
+          <p>Does a user–item graph help a generative recommender? On the TIGER paper’s own Amazon Beauty benchmark, feeding LightGCN in through a learned gate raised Recall@10 by 5.8%, better on all six seeds. Our best model reaches 0.0767, above TIGER’s published 0.0648 and Meta’s official RPG code on the same embeddings (0.0736). I built the TIGER reproduction, the graph comparison and the fusion experiments.</p>
+          <p class="mo-links"><a class="textlink" href="https://github.com/KrishaDarji/graph-tiger">GitHub</a></p>
+        </li>
+        <li class="r">
+          <div class="mo-head"><p class="mo-t">Database Sidekick</p><p class="mo-m">Hacktoberfest Raleigh 2026, with Mulya Patel</p></div>
+          <p>Ask your database a question in plain English and Gemma 4 writes and runs the SQL. Reads run on their own, every write waits for your approval, and a server-side SQL policy blocks destructive statements even if the model asks for one. Drop in an ER diagram and it proposes the tables.</p>
+          <p class="mo-links"><a class="textlink" href="https://github.com/draqa214/HacktoberFest-db-sidekick">GitHub</a></p>
+        </li>
+        <li class="r">
+          <div class="mo-head"><p class="mo-t">Napkin → Deploy</p><p class="mo-m">Hacktoberfest Raleigh 2026, solo build</p></div>
+          <p>Photograph a hand-drawn architecture and Gemma 4 turns it into a running Docker Compose stack. When a service fails, a second Gemma model reads its logs and applies whitelisted fixes, up to three tries, until every health check is green. I built all of it: the vision step, the healing agent, the infrastructure and the UI.</p>
+          <p class="mo-links"><a class="textlink" href="https://github.com/draqa214/napkin-to-deploy">GitHub</a></p>
+        </li>
+        <li class="r">
+          <div class="mo-head"><p class="mo-t">No Cap Your Honor</p><p class="mo-m">HackNC State 2026, team of four</p></div>
+          <p>AI agents put a suspicious post on trial. A prosecutor and a defender argue for five rounds, then a jury of Gemini, Groq and Llama models votes. I built the text, URL, image and video inputs, the Groq jury agent and the courtroom audio queue.</p>
+          <p class="mo-links"><a class="textlink" href="https://github.com/pranshavpatel/hackncstate_unstable_diffusers">GitHub</a></p>
+        </li>
+        <li class="r">
+          <div class="mo-head"><p class="mo-t">VibeDish</p><p class="mo-m">Software engineering course, NC State</p></div>
+          <p>Suggests discounted surplus meals from local restaurants that match the mood of your Spotify listening, so less food goes to waste. FastAPI, Supabase and Next.js.</p>
+          <p class="mo-links"><a class="textlink" href="https://vibedish.vercel.app/">Live site</a><a class="textlink" href="https://github.com/pranshavpatel/CSC510-Section2-Group8">GitHub</a></p>
+        </li>
+        <li class="r">
+          <div class="mo-head"><p class="mo-t">TrafficSense</p><p class="mo-m">Deep learning, Nirma University</p></div>
+          <p>Sets traffic-light timings from vehicle counts. A ResNet-50 fine-tuned on 1,500+ images from Indian cities to recognise 13 object classes, at 78.2% validation accuracy.</p>
+        </li>
+        <li class="r">
+          <div class="mo-head"><p class="mo-t">Does paid search actually work?</p><p class="mo-m">Causal inference, personal project</p></div>
+          <p>A T-learner with uncertainty estimates on 87,711 Google Analytics sessions, asking whether a cost-per-click campaign raises the chance of a purchase or just finds people who would have bought anyway.</p>
+        </li>
+        <li class="r">
+          <div class="mo-head"><p class="mo-t">VinylPod</p><p class="mo-m">macOS app, personal project</p></div>
+          <p>A menu-bar app that spins a vinyl record for whatever Spotify is playing, with the album art on the label. Swift, talking to Spotify over AppleScript, with no API keys or server.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience" class="exp wrap" aria-labelledby="exp-h" data-reveal>
+    <h2 id="exp-h" class="r">Experience</h2>
+    <ol class="roles">
+      <li class="r">
+        <span class="when">May 2026 to now</span>
+        <div>
+          <h3>GenAI and ML engineering intern, Seagate Technology</h3>
+          <ul>
+            <li>Built topic classification for an internal HR assistant built on retrieval-augmented generation (RAG), so each question searches the right domain.</li>
+            <li>Compared retrieval strategies for patent search (HyDE, multi-query RRF, parent-child chunking, hybrid search) with an LLM-as-judge evaluation.</li>
+            <li>Added and tested JWT authentication for an AI intake agent across its config flows.</li>
+            <li>Found and escalated two governance risks in a production Copilot deployment, one an unmonitored privacy exposure.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="r">
+        <span class="when">Jan to May 2025</span>
+        <div>
+          <h3>Data science intern, RoutedAI</h3>
+          <ul>
+            <li>Led the redesign of the job recommendation system and cut response time by 30%.</li>
+            <li>Made the résumé parser 20% faster and better at reading messy files.</li>
+            <li>Built APIs that map career transitions and spot each company’s best hiring periods.</li>
+            <li>Worked across AWS, Supabase, Snowflake and FastAPI, with OpenAI, DeepSeek, Groq and Mistral models.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="r">
+        <span class="when">May to Jul 2024</span>
+        <div>
+          <h3>Data science and ML intern, Stypix</h3>
+          <ul>
+            <li>Built a music genre classifier, comparing XGBoost, logistic regression and SVC.</li>
+            <li>Used GANs to double a small training set.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="r">
+        <span class="when">2025 to 2027</span>
+        <div><h3>MS in Computer Science, North Carolina State University</h3><p>GPA 4.0. Algorithms, software engineering, automated learning and data analysis, advanced machine learning.</p></div>
+      </li>
+      <li class="r">
+        <span class="when">2021 to 2025</span>
+        <div><h3>B.Tech in Computer Science, Nirma University</h3><p>Minor in robotics. PPI 8.63 of 10. Machine learning, deep learning, NLP, big data, microservices.</p></div>
+      </li>
+    </ol>
+    <div class="stack r">
+      <h3>What I use</h3>
+      <p><strong>Languages:</strong> Python, SQL, C and C++, Java, C#, JavaScript, Solidity, Lua.</p>
+      <p><strong>Machine learning:</strong> PyTorch, TensorFlow, Keras, LLMs, RAG, embeddings, computer vision, NLP, OCR.</p>
+      <p><strong>Data:</strong> Pinecone, Snowflake, Supabase, MongoDB, MySQL, Spark, Hadoop.</p>
+      <p><strong>Shipping:</strong> FastAPI, Docker, AWS, GCP, n8n, Git.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact field" aria-labelledby="ct-h" data-reveal>
+    <div class="wrap contact-grid">
+      <h2 id="ct-h" class="r">Contact</h2>
+      <div class="ct-body">
+        <p class="r">Hiring for ML or GenAI work, or want to talk about agents and retrieval? Write to me.</p>
+        <a class="mail r" href="mailto:vivekvanera@gmail.com">vivekvanera@gmail.com</a>
+        <ul class="links r">
+          <li><a class="textlink on-field" href="https://github.com/draqa214">GitHub</a></li>
+          <li><a class="textlink on-field" href="https://www.linkedin.com/in/vivek-vanera-2b64ab244/">LinkedIn</a></li>
+          <li><a class="textlink on-field" href="Vivek__Resume.pdf">Résumé (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot field">
+  <p class="foot-name wrap" aria-hidden="true">Vivek Vanera</p>
+  <div class="wrap foot-meta">
+    <p>Raleigh, North Carolina</p>
+    <p>© 2026 Vivek Vanera</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

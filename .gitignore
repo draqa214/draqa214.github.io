@@ -1,0 +1,8 @@
+# Kept locally, not published
+v2/
+.claude/
+resume.tex
+*.aux
+*.log
+*.out
+.DS_Store
